@@ -27,13 +27,11 @@
         localStorage.setItem('linkShareAuth', result);
       }
 
-      // Save this logic for when we actually want to try to switch on the
-      // state of authorization.
-      // if (provider.hasAccessToken()) {
-      //   button.classList.add('authorized');
-      // } else {
-      //   button.classList.remove('authorized');
-      // }
+      if (provider.hasAccessToken()) {
+        button.classList.add('authorized');
+      } else {
+        button.classList.remove('authorized');
+      }
     });
   }
 
@@ -58,6 +56,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    //document.querySelector('button#google').addEventListener('click', function() { authorize('google'); });
     authorize('google');
     buildUserData(window['google']);
   });

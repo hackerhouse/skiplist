@@ -30,6 +30,6 @@
   ],
 
   "permissions": [
-    "http://*/*", "unlimitedStorage", "tabs"
+    "http://*/*", "unlimitedStorage", "tabs", "https://*/*"
   ]
 }
