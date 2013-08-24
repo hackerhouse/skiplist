@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-  </body>
+<head>
+<title>{{ title }}</title>
+<link rel='stylesheet' href='/styles/style.css' />
+</head>
+<body>
+<div id="container">
+  <div id="columns">
+    {{#tiles}}
+      <div class="tile">
+        <h2 class="name">_{{ user.name }}</h2>
+        <h3>
+          {{ pageTitle }} 
+        </h3>
+        <span class="domain">{{ pageURL }}</span>
+        <span class="timeStamp"></span>
+      </div>
+    {{/tiles}}
+  </div>
+</div>
+</body>
 </html>
