@@ -8,6 +8,7 @@
 <div id="container">
   <div id="columns">
     {{#tiles}}
+      <a href="{{pageURL}}">
       <div class="tile">
         <h2 class="name">_{{ user.name }}</h2>
         <h3>
@@ -16,6 +17,7 @@
         <span class="domain">{{ pageURL }}</span>
         <span class="timeStamp"></span>
       </div>
+      </a>
     {{/tiles}}
   </div>
 </div>
