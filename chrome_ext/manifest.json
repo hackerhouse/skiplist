@@ -6,7 +6,7 @@
 
   "browser_action": {
     "default_title": "linkCombinator",
-    //"default_icon": "icon128.png",
+    "default_icon": "link38.png",
     "default_popup": "options.html"
   },
 
