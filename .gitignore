@@ -18,5 +18,7 @@ node_modules
 
 # Extra ignores
 components
+bower_components/
+linkShare_Frontend/
 public/stylesheets/style.css
 .DS_Store
