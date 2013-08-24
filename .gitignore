@@ -18,5 +18,5 @@ node_modules
 
 # Extra ignores
 components
-public
+public/stylesheets/style.css
 .DS_Store
