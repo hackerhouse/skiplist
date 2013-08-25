@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -14,10 +15,12 @@ var _ = require('underscore');
 var app = express();
 
 /* Vars accessible to all subapps */
+mongo = require('mongodb');
 mongo_client = require('mongodb').MongoClient;
 format = require('util').format;
 _mdb = 'mongodb://127.0.0.1:27017/linkshare';
 _ = require('underscore');
+BSON = mongo.BSONPure;
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,6 +45,7 @@ app.get('/users', user.read);
 app.post('/users', user.update);
 
 app.get('/tiles', tile.read);
+app.del('/tiles/:id', tile.del);
 app.post('/tiles', tile.update);
 
 http.createServer(app).listen(app.get('port'), function(){
