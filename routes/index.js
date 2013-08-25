@@ -3,23 +3,40 @@
  * GET home page.
  */
 
+var _ = require('underscore');
 
 function deriveTiles() {
-  console.log("DERIVETILES");
-
+    console.log("DERIVETILES");
 }
 
 exports.index = function(req, res){
-  mongo_client = require('mongodb').MongoClient;
-  format = require('util').format; 
-  mongo_client.connect('mongodb://127.0.0.1:27017/linkshare', function(err, db) {
-    collection = db.collection('tiles');
-    hhhh = collection.find().toArray(function(err, results) {
-        console.log(results);
-        res.render('index', { title: 'Express', tiles: results });
-      }); 
-  });
-  
+    var users = {};
+    mongo_client.connect(_mdb, function(err, db) {
+	var tiles_cursor = db.collection('tiles');
+	var users_cursor = db.collection('users');
+	tiles_cursor.find().toArray(function(err, tiles) {
+	    if (err) {
+		res.render(500);
+	    }
+	    var users = {}, left=0;
+	    _.each(tiles, function (tile) {
+		// if this tile's user isn't in users ...
+		if (!users.hasOwnProperty(tile.uid)) {
+		    ++left;
+		    // get user from db and add it to users dict
+		    users_cursor.findOne({'id': tile.uid}, function(err, user) {
+			if (!err) {
+			    users[tile.uid] = user;
+			}
+			if (users[tile.uid]) {
+			    tile.username = users[tile.uid].name;
+			}
+			--left || res.render('index', { title: 'SkipList', tiles: tiles });
+		    });
+		}
+	    });
+	})
+    });
 };
-
-
+			 
+			 
