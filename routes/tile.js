@@ -3,14 +3,39 @@
  * POST tile listing.
  */
 
-exports.create = function(req, res){
-  console.log("POSTED TO CREATE TILE");
-  console.log(req);
-  mongo_client = require('mongodb').MongoClient;
-  format = require('util').format; 
-  mongo_client.connect('mongodb://127.0.0.1:27017/linkshare', function(err, db) {
-    collection = db.collection('tiles');
-    collection.insert(req.body, function(err, docs) { return docs; });
-    res.send("thank you tile god");
-  });
+exports.update = function(req, res){
+    mongo_client.connect(_mdb, function(err, db) {
+	var tileq = {'uid': req.body.uid,
+		     'pageURL': req.body.pageURL
+		    };
+	var collection = db.collection('tiles');	
+	collection.findOne(tileq, function(err, tile) {
+	    if (!err) {
+		if (tile) {
+		    collection.update(tileq, req.body, function(err, modified) {
+			res.send(modified);
+		    });
+		} else {
+		    collection.insert(req.body, function(err, records) {
+			res.send(records);
+		    });
+		}
+	    } else {
+		res.send(500);
+	    }
+	});
+    });
 };
+
+exports.read = function(req, res){
+    mongo_client.connect(_mdb, function(err, db) {
+	var collection = db.collection('tiles');
+	collection.find().toArray(function(err, results) {
+	    if (!err) {
+		res.send(results);
+	    } else {
+		res.send(500);
+	    }
+	});
+    });
+}
