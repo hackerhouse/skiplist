@@ -9,9 +9,15 @@ var user = require('./routes/user');
 var tile = require('./routes/tile');
 var http = require('http');
 var path = require('path');
+var _ = require('underscore');
 
 var app = express();
 
+/* Vars accessible to all subapps */
+mongo_client = require('mongodb').MongoClient;
+format = require('util').format;
+_mdb = 'mongodb://127.0.0.1:27017/linkshare';
+_ = require('underscore');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -31,8 +37,12 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.post('/tiles', tile.create);
+
+app.get('/users', user.read);
+app.post('/users', user.update);
+
+app.get('/tiles', tile.read);
+app.post('/tiles', tile.update);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
