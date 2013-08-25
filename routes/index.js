@@ -18,7 +18,6 @@ exports.index = function(req, res){
 	    if (err) {
 		res.render(500);
 	    }
-	    console.log('foo');
 	    var users = {}, left=0;
 	    _.each(tiles, function (tile) {
 		// if this tile's user isn't in users ...
@@ -26,7 +25,6 @@ exports.index = function(req, res){
 		    ++left;
 		    // get user from db and add it to users dict
 		    users_cursor.findOne({'id': tile.uid}, function(err, user) {
-			console.log('foo');
 			if (!err) {
 			    users[tile.uid] = user;
 			}

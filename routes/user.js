@@ -7,11 +7,11 @@ exports.update = function(req, res){
     mongo_client.connect(_mdb, function(err, db) {
 	var uid = req.body.id;
 	var collection = db.collection('users');
-	collection.findOne({id: uid}, function(err, user) {
+	collection.findOne({'id': uid}, function(err, user) {
 	    if(user) {
-		collection.update({id: uid}, req.body, function(err, modified) {
+		collection.update({'id': uid}, req.body, function(err, modified) {
 		    if (!err) {
-			res.send(modified);
+			res.send(200);
 		    } else {
 			res.send(500);
 		    }

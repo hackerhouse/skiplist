@@ -51,11 +51,9 @@ function buildUserData(provider) {
                  };
       var req1 = {type: 'POST', url: 'http://localhost:3000/users', data: user};
       var req2 = {type: 'POST', url: 'http://localhost:3000/tiles', data: tile};
-      console.log('heave');
-      $.ajax(req1).done(function () {
-	  console.log('hoe');
-          $.ajax(req2);
-      });
+	$.ajax(req1).done(function (data) {
+	    $.ajax(req2, function() { console.log('bar'); });
+	});
     });
   });
 }
