@@ -44,6 +44,16 @@ app.post('/users', user.update);
 app.get('/tiles', tile.read);
 app.post('/tiles', tile.update);
 
-http.createServer(app).listen(app.get('port'), function(){
+//app.get('/', function(req, res) { res.render('index', {'title': 'foo', 'tiles': {}})});
+
+
+var server = http.createServer(app);
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+});
+
+var io = require("socket.io").listen(server);
+io.on('connection', function(socket){
+	console.log("Connection Establisted!");
+	socket.emit ('event_from_server', { message : 'This is a LIVE Connection mofos!'})
 });
