@@ -40,7 +40,6 @@ exports.index = function(req, res){
 		    }
 		});
 	    } else {
-		console.log('foo');
 		res.render('index', { title: 'SkipList', tiles: tiles });
 	    }
 	})
