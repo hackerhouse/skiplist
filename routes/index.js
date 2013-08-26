@@ -59,7 +59,7 @@
           _.each(tiles, function (tile) {
             // if this tile's user isn't in users ...
             
-            tile.pageURL = trimDomain(tile.pageURL);
+            tile.prettyURL = trimDomain(tile.pageURL);
             
             console.log(tile);
 

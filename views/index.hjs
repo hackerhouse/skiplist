@@ -19,7 +19,7 @@
         <h3>
           {{ pageTitle }} 
         </h3>
-        <span class="domain">{{ pageURL }}</span>
+        <span class="domain">{{ prettyURL }}</span>
         <span class="timeStamp"></span>
       </div>
     {{/tiles}}
