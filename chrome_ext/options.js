@@ -46,14 +46,14 @@ function buildUserData(provider) {
     var q = {'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT};
     chrome.tabs.query(q, function(tabs) {
       var tile = {'pageURL': tabs[0].url,
-                  'pageTitle': tabs[0].title,
-                  'uid': user.id
-                 };
-      var req1 = {type: 'POST', url: 'http://localhost:3000/users', data: user};
-      var req2 = {type: 'POST', url: 'http://localhost:3000/tiles', data: tile};
-	$.ajax(req1).done(function (data) {
-	    $.ajax(req2, function() { console.log('bar'); });
-	});
+        'pageTitle': tabs[0].title,
+        'uid': user.id
+      };
+      var req1 = {type: 'POST', url: 'http://nxvr.org/users', data: user};
+      var req2 = {type: 'POST', url: 'http://nxvr.org/tiles', data: tile};
+      $.ajax(req1).done(function (data) {
+        $.ajax(req2, function() { console.log('bar'); });
+      });
     });
   });
 }
