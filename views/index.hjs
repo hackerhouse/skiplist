@@ -14,7 +14,7 @@
 
     {{#tiles}}
       <div class="tile">
-        <a href="{{pageURL}}"></a>
+        <a class="blockLink" href="{{pageURL}}"></a>
         <h2 class="name">_{{ username }}</h2>
         <h3>
           {{ pageTitle }} 
