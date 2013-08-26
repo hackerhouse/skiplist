@@ -3,7 +3,7 @@ var socket = io.connect('/');
 		console.log( data.message );
 		$('#message').html( data.message );
 	});
-	socket.on('ping', function( data ){
+	socket.on('reload', function( data ){
 		console.log( data.message );
 		$('#message').html( data.message );
 	});
