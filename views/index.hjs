@@ -3,6 +3,8 @@
 <head>
 <title>{{ title }}</title>
 <link rel='stylesheet' href='/styles/style.css' />
+<script src='./socket.io/socket.io.js'></script>
+<script src='http://code.jquery.com/jquery.js'></script>
 </head>
 <body>
 <div id="container">
@@ -22,5 +24,6 @@
     {{/tiles}}
   </div>
 </div>
+<script src='javascripts/socket.js'></script>
 </body>
 </html>
