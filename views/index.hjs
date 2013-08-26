@@ -2,15 +2,17 @@
 <html>
 <head>
 <title>{{ title }}</title>
-<link rel='stylesheet' href='/styles/style.css' />
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,100italic,400italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='app/styles/css/style.css' />
+<script src="http://localhost:35729/livereload.js?snipver=1" type="text/javascript"></script>
 </head>
 <body>
 <div id="container">
   <div id="columns">
 
     {{#tiles}}
-      <a href="{{pageURL}}">
       <div class="tile">
+        <a href="{{pageURL}}"></a>
         <h2 class="name">_{{ username }}</h2>
         <h3>
           {{ pageTitle }} 
@@ -18,7 +20,6 @@
         <span class="domain">{{ pageURL }}</span>
         <span class="timeStamp"></span>
       </div>
-      </a>
     {{/tiles}}
   </div>
 </div>
