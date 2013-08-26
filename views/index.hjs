@@ -24,6 +24,6 @@
     {{/tiles}}
   </div>
 </div>
-<script src='javascripts/socket.js'></script>
+<script src='js/socket.js'></script>
 </body>
 </html>
