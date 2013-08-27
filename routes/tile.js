@@ -27,6 +27,26 @@ exports.update = function(req, res){
   });
 };
 
+exports.del = function (req, res) {
+    var tid = new BSON.ObjectID(req.params.id);
+    mongo_client.connect(_mdb, function(err, db) {
+	if (err) {
+	    res.send(500)
+	}
+	var collection = db.collection('tiles');
+	collection.remove({_id: tid}, function(err, removed) {
+	    if (err) {
+		console.log(err);
+		res.send(500);
+	    } else {
+		console.log(removed);
+		res.send(200);
+	    }
+	});
+
+    });
+}
+
 exports.read = function(req, res){
   mongo_client.connect(_mdb, function(err, db) {
     var collection = db.collection('tiles');
