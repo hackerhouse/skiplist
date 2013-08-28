@@ -23,7 +23,7 @@ function checkAuthorized() {
     var button = document.querySelector('#' + providerName);
 
     if (!localStorage.getItem('linkShareAuth')) {
-      var result = buildUserData(provider)
+      var result = buildUserData(provider);
       localStorage.setItem('linkShareAuth', result);
     }
 
@@ -49,8 +49,8 @@ function buildUserData(provider) {
         'pageTitle': tabs[0].title,
         'uid': user.id
       };
-      var req1 = {type: 'POST', url: 'http://nxvr.org/users', data: user};
-      var req2 = {type: 'POST', url: 'http://nxvr.org/tiles', data: tile};
+      var req1 = {type: 'POST', url: 'http://localhost:3000/users', data: user};
+      var req2 = {type: 'POST', url: 'http://localhost:3000/tiles', data: tile};
       $.ajax(req1).done(function (data) {
         $.ajax(req2, function() { console.log('bar'); });
       });
