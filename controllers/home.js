@@ -44,14 +44,14 @@
   }
 
   exports.index = function(req, res){
-      Tile.find().toArray(function(err, tiles) {
+      Tile.find(function(err, tiles) {
           if (err) {
               res.render(500);
           }
           if (tiles.length) {
               var users = {}, left=0;
               _.each(tiles, function (tile) {
-		  // if this tile's user isn't in users ...            
+		  // if this tile's user isn't in users ...
 		  tile.prettyURL = trimDomain(tile.pageURL);            
 		  console.log(tile);
 

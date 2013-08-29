@@ -1,23 +1,15 @@
 
-/**
- * Module dependencies.
- */
-
 var express = require('express')
   , mongoose = require('mongoose')
   , User = require('./model/users')
   , Tile = require('./model/tiles')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , tile = require('./routes/tile')
   , http = require('http')
   , path = require('path');
 
-var app = express();
-
-/* Vars accessible to all subapps */
+app = express(),
+routes = require('./routes'),
+_ = require('underscore'),
 format = require('util').format;
-_ = require('underscore');
 
 app.configure(function() {
   app.set('port', process.env.PORT || 3000);
@@ -43,16 +35,6 @@ app.configure('production', function() {
     mongoose.connect('mongodb://127.0.0.1:27017/linkshare');
     app.use(express.errorHandler());
 });
-
-
-//app.get('/', routes.index);
-app.get('/users', user.read);
-app.get('/tiles', tile.read);
-
-app.post('/users', user.update);
-app.post('/tiles', tile.update);
-
-//app.del('/tiles/:id', tile.del);
 
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){
