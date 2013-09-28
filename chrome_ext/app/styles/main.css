@@ -1,7 +1,0 @@
-/* Will be compiled down to a single stylesheet with your sass files */
-
-html {
-    /* Defaults css for cssmin process */
-    h1 { font-size: 20px }
-    button.authorized { background: green }
-}
