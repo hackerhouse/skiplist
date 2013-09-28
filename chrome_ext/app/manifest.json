@@ -1,7 +1,7 @@
 {
     "name": "Skiplist",
-    "version": "0.0.10",
-    "manifest_version": 3,
+    "version": "0.0.55",
+    "manifest_version": 2,
     "description": "An application for sharing media with your fellow hackers",
     "background": {
         "scripts": [
@@ -61,7 +61,6 @@
     ],
     "permissions": [
         "tabs",
-        "management",
         "unlimitedStorage",
         "http://*/*",
         "https://*/*"
