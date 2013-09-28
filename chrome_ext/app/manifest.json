@@ -1,9 +1,8 @@
 {
     "name": "Skiplist",
-    "version": "0.0.4",
+    "version": "0.0.10",
     "manifest_version": 3,
     "description": "An application for sharing media with your fellow hackers",
-    "icons": "images/icon-38.png",
     "background": {
         "scripts": [
             "scripts/background.js"
@@ -46,7 +45,7 @@
                 "http://www.google.com/robots.txt*"
             ],
             "js": [
-                "lib/oauth2/oauth2_inject.js"
+                "scripts/oauth2/oauth2_inject.js"
             ],
             "run_at": "document_start"
         },
@@ -55,7 +54,7 @@
                 "https://github.com/robots.txt*"
             ],
             "js": [
-                "lib/oauth2/oauth2_inject.js"
+                "scripts/oauth2/oauth2_inject.js"
             ],
             "run_at": "document_start"
         }
