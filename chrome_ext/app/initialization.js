@@ -15,4 +15,7 @@
 
 var Skiplist = window.SkipList  = {};
 
+// Remote skiplist host
 Skiplist.remoteURL = "http://@@hostname:@@port/";
+// Currently supported providers
+Skiplist.providers = ['google'];
