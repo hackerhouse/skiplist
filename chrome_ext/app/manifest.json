@@ -9,7 +9,6 @@
         ]
     },
     "browser_action": {
-        "default_icon": "images/icon-38.png",
         "default_title": "Skiplist",
         "default_popup": "popup.html"
     },
@@ -21,6 +20,7 @@
                 "https://*/*"
             ],
             "js": [
+                "scripts/initialization.js",
                 "scripts/jquery.min.js"
             ],
             "run_at": "document_start",

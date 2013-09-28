@@ -123,6 +123,15 @@ module.exports = function (grunt) {
         /*uglify: {
             dist: {}
         },*/
+        replace: {
+            dist: {
+                options: {
+                    patterns: [{ json: grunt.file.readJSON('config.json') }]
+                },
+                files: [{ src: ['<%= skiplist.app %>/initialization.js'],
+                          dest: '<%= skiplist.dist %>/scripts/initialization.js'}]
+            }
+        },
         useminPrepare: {
             options: {
                 dest: '<%= skiplist.dist %>'
