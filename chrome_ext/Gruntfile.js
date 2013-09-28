@@ -7,27 +7,23 @@ var mountFolder = function (connect, dir) {
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
-
 module.exports = function (grunt) {
-    // show elapsed time at the end
     require('time-grunt')(grunt);
-    // load all grunt tasks
     require('load-grunt-tasks')(grunt);
 
-    // configurable paths
-    var yeomanConfig = {
+    var skiplistConfig = {
         app: 'app',
         dist: 'dist'
     };
 
     grunt.initConfig({
-        yeoman: yeomanConfig,
+        skiplist: skiplistConfig,
         watch: {
             options: {
                 spawn: false
             },
             coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                files: ['<%= skiplist.app %>/scripts/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -35,14 +31,13 @@ module.exports = function (grunt) {
                 tasks: ['coffee:test']
             },
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= skiplist.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server']
             }
         },
         connect: {
             options: {
                 port: 9000,
-                // change this to '0.0.0.0' to access the server from outside
                 hostname: 'localhost'
             },
             test: {
@@ -62,8 +57,8 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= yeoman.dist %>/*',
-                        '!<%= yeoman.dist %>/.git*'
+                        '<%= skiplist.dist %>/*',
+                        '!<%= skiplist.dist %>/.git*'
                     ]
                 }]
             },
@@ -81,7 +76,7 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>/scripts',
+                    cwd: '<%= skiplist.app %>/scripts',
                     src: '{,*/}*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
@@ -99,13 +94,13 @@ module.exports = function (grunt) {
         },
         compass: {
             options: {
-                sassDir: '<%= yeoman.app %>/styles',
+                sassDir: '<%= skiplist.app %>/styles',
                 cssDir: '.tmp/styles',
                 generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: '<%= yeoman.app %>/bower_components',
+                imagesDir: '<%= skiplist.app %>/images',
+                javascriptsDir: '<%= skiplist.app %>/scripts',
+                fontsDir: '<%= skiplist.app %>/styles/fonts',
+                importPath: '<%= skiplist.app %>/bower_components',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 relativeAssets: false
@@ -130,27 +125,27 @@ module.exports = function (grunt) {
         },*/
         useminPrepare: {
             options: {
-                dest: '<%= yeoman.dist %>'
+                dest: '<%= skiplist.dist %>'
             },
             html: [
-                '<%= yeoman.app %>/popup.html',
-                '<%= yeoman.app %>/options.html'
+                '<%= skiplist.app %>/popup.html',
+                '<%= skiplist.app %>/options.html'
             ]
         },
         usemin: {
             options: {
-                dirs: ['<%= yeoman.dist %>']
+                dirs: ['<%= skiplist.dist %>']
             },
-            html: ['<%= yeoman.dist %>/{,*/}*.html'],
-            css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
+            html: ['<%= skiplist.dist %>/{,*/}*.html'],
+            css: ['<%= skiplist.dist %>/styles/{,*/}*.css']
         },
         imagemin: {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>/images',
+                    cwd: '<%= skiplist.app %>/images',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= yeoman.dist %>/images'
+                    dest: '<%= skiplist.dist %>/images'
                 }]
             }
         },
@@ -158,18 +153,18 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>/images',
+                    cwd: '<%= skiplist.app %>/images',
                     src: '{,*/}*.svg',
-                    dest: '<%= yeoman.dist %>/images'
+                    dest: '<%= skiplist.dist %>/images'
                 }]
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    '<%= yeoman.dist %>/styles/main.css': [
+                    '<%= skiplist.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/styles/{,*/}*.css'
+                        '<%= skiplist.app %>/styles/{,*/}*.css'
                     ]
                 }
             }
@@ -189,9 +184,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>',
+                    cwd: '<%= skiplist.app %>',
                     src: '*.html',
-                    dest: '<%= yeoman.dist %>'
+                    dest: '<%= skiplist.dist %>'
                 }]
             }
         },
@@ -201,17 +196,17 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
+                    cwd: '<%= skiplist.app %>',
+                    dest: '<%= skiplist.dist %>',
                     src: [
+                        'scripts/oauth2/**/*',
                         '*.{ico,png,txt}',
                         'images/{,*/}*.{webp,gif}',
-                        '_locales/{,*/}*.json'
                     ]
                 }, {
                     expand: true,
                     cwd: '.tmp/images',
-                    dest: '<%= yeoman.dist %>/images',
+                    dest: '<%= skiplist.dist %>/images',
                     src: [
                         'generated/*'
                     ]
@@ -243,8 +238,8 @@ module.exports = function (grunt) {
                         target:'scripts/background.js'
                     }
                 },
-                src: '<%= yeoman.app %>',
-                dest: '<%= yeoman.dist %>'
+                src: '<%= skiplist.app %>',
+                dest: '<%= skiplist.dist %>'
             }
         },
         compress: {
