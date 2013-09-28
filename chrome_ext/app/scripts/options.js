@@ -1,3 +1,5 @@
+'use strict';
+
 var google = new OAuth2('google', {
   client_id: '361603295265.apps.googleusercontent.com',
   client_secret: 'IBR_QmA2FmtZG7vBE3Sk_o9v',
@@ -61,4 +63,4 @@ function buildUserData(provider) {
 document.addEventListener('DOMContentLoaded', function () {
   authorize('google');
   buildUserData(window['google']);
-});
+}

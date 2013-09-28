@@ -1,0 +1,70 @@
+{
+    "name": "Skiplist",
+    "version": "0.0.4",
+    "manifest_version": 3,
+    "description": "An application for sharing media with your fellow hackers",
+    "icons": "images/icon-38.png",
+    "background": {
+        "scripts": [
+            "scripts/background.js"
+        ]
+    },
+    "browser_action": {
+        "default_icon": "images/icon-38.png",
+        "default_title": "Skiplist",
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html",
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "scripts/jquery.min.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
+        },
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "css": [
+                "styles/main.css"
+            ],
+            "js": [
+                "scripts/contentscript.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": false
+        },
+        {
+            "matches": [
+                "http://www.google.com/robots.txt*"
+            ],
+            "js": [
+                "lib/oauth2/oauth2_inject.js"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "https://github.com/robots.txt*"
+            ],
+            "js": [
+                "lib/oauth2/oauth2_inject.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "management",
+        "unlimitedStorage",
+        "http://*/*",
+        "https://*/*"
+    ]
+}
