@@ -1,6 +1,3 @@
-/*jshint camelcase: false*/
-// Generated on 2013-09-28 using generator-chrome-extension 0.2.5
-'use strict';
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
@@ -71,16 +68,6 @@ module.exports = function (grunt) {
                 }]
             },
             server: '.tmp'
-        },
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
-            },
-            all: [
-                'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/{,*/}*.js',
-                'test/spec/{,*/}*.js'
-            ]
         },
         mocha: {
             all: {
@@ -291,12 +278,12 @@ module.exports = function (grunt) {
         'concat',
         'uglify',
         'copy',
+        'replace',
         'usemin',
         'compress'
     ]);
 
     grunt.registerTask('default', [
-        //'jshint',
         'test',
         'build'
     ]);
