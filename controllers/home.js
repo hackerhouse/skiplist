@@ -51,24 +51,24 @@
           if (tiles.length) {
               var users = {}, left=0;
               _.each(tiles, function (tile) {
-		  // if this tile's user isn't in users ...
-		  tile.prettyURL = trimDomain(tile.pageURL);            
-		  console.log(tile);
+                  // if this tile's user isn't in users ...
+                  tile.prettyURL = trimDomain(tile.pageURL);            
+                  console.log(tile);
 
-		  if (!users.hasOwnProperty(tile.uid)) {
-		      ++left;
-		      // get user from db and add it to users dict
-		      User.findOne({'id': tile.uid}, function(err, user) {
-			  if (!err) {
-			      users[tile.uid] = user;
-			  }
-			  if (users[tile.uid]) {
-			      tile.username = trimName(users[tile.uid].name);
-			  }
-			  --left || res.render('index', { title: 'SkipList',
-							  tiles: tiles });
-		      });
-		  }
+                  if (!users.hasOwnProperty(tile.uid)) {
+                      ++left;
+                      // get user from db and add it to users dict
+                      User.findOne({'id': tile.uid}, function(err, user) {
+                          if (!err) {
+                              users[tile.uid] = user;
+                          }
+                          if (users[tile.uid]) {
+                              tile.username = trimName(users[tile.uid].name);
+                          }
+                          --left || res.render('index', { title: 'SkipList',
+                                                          tiles: tiles });
+                      });
+                  }
               });
           } else {
               res.render('index', { title: 'SkipList', tiles: tiles });
