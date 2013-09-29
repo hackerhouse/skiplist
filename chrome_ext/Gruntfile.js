@@ -208,6 +208,7 @@ module.exports = function (grunt) {
                     cwd: '<%= skiplist.app %>',
                     dest: '<%= skiplist.dist %>',
                     src: [
+                        'initialization.js',
                         'scripts/oauth2/**/*',
                         '*.{ico,png,txt}',
                         'images/{,*/}*.{webp,gif}',
@@ -280,7 +281,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'cssmin',
         'concat',
-        'uglify',
+        //'uglify',
         'copy',
         'replace',
         'usemin',

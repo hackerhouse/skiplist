@@ -11,6 +11,7 @@
     "underscore": "*",
     "hjs": "*",
     "less-middleware": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "express-validator": "*"
   }
 }
