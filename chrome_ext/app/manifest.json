@@ -1,6 +1,6 @@
 {
     "name": "Skiplist",
-    "version": "0.0.55",
+    "version": "0.0.36",
     "manifest_version": 2,
     "description": "An application for sharing media with your fellow hackers",
     "background": {
@@ -20,25 +20,10 @@
                 "https://*/*"
             ],
             "js": [
-                "scripts/initialization.js",
-                "scripts/jquery.min.js"
+                "scripts/initialization.js"
             ],
             "run_at": "document_start",
             "all_frames": true
-        },
-        {
-            "matches": [
-                "http://*/*",
-                "https://*/*"
-            ],
-            "css": [
-                "styles/main.css"
-            ],
-            "js": [
-                "scripts/contentscript.js"
-            ],
-            "run_at": "document_end",
-            "all_frames": false
         },
         {
             "matches": [
