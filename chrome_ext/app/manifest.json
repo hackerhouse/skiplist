@@ -1,10 +1,12 @@
 {
     "name": "Skiplist",
-    "version": "0.0.59",
+    "version": "0.0.73",
     "manifest_version": 2,
     "description": "An application for sharing media with your fellow hackers",
     "background": {
         "scripts": [
+            "scripts/oauth2/chrome_ex_oauthsimple.js",
+            "scripts/oauth2/chrome_ex_oauth.js",
             "scripts/background.js"
         ]
     },
@@ -13,37 +15,6 @@
         "default_popup": "popup.html"
     },
     "options_page": "options.html",
-    "content_scripts": [
-        {
-            "matches": [
-                "http://*/*",
-                "https://*/*"
-            ],
-            "js": [
-                "scripts/initialization.js"
-            ],
-            "run_at": "document_start",
-            "all_frames": true
-        },
-        {
-            "matches": [
-                "http://www.google.com/robots.txt*"
-            ],
-            "js": [
-                "scripts/oauth2/oauth2_inject.js"
-            ],
-            "run_at": "document_start"
-        },
-        {
-            "matches": [
-                "https://github.com/robots.txt*"
-            ],
-            "js": [
-                "scripts/oauth2/oauth2_inject.js"
-            ],
-            "run_at": "document_start"
-        }
-    ],
     "permissions": [
         "tabs",
         "unlimitedStorage",

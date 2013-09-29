@@ -1,19 +1,7 @@
-window.google = new OAuth2('google', {
-  clientId: Skiplist.providerTokens.google.clientID,
-  clientSecret: Skiplist.providerTokens.google.clientSecret,
-  apiScope: 'https://www.googleapis.com/auth/userinfo.profile'
-});
-
-function authenticate() {
-  // whack alert
-  var provider = (this.id).toString();
-  window.providera = provider;
-  console.log("provider");
-  console.log(provider);
-  authorize(provider);
-  buildUserData(window[authenticate]);
-}
-
+// Add an event listener for button.btn clicks and begin the OAuth flow here.
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('.btn').addEventListener('click', authenticate);
+  document.querySelector('.btn').addEventListener('click', function () {
+    var provider = (this.id).toString();
+    chrome.extension.getBackgroundPage().initOAuthFlow(provider);
+  });
 });
