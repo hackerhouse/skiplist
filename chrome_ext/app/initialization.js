@@ -1,6 +1,6 @@
 /**
- This file contains any initialization logic that may need to exist for the
- chrome extension, namely
+  This file contains a simple object to contain any initialization logic that
+  may need to exist for the chrome extension, namely.
 
   - Global config parameters: The top level file config.json contains
   parameters that are handled by grunt-replace that change global configuration
