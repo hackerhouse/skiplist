@@ -12,11 +12,18 @@
     <!-- assertion framework -->
     <script src="lib/chai.js"></script>
     <script>var expect = chai.expect</script>
+    <script src="lib/sinon.js"></script>
 
     <!-- include source files here... -->
+    <!-- Maybe I should include the dist rather than app files..? -->
+    <script src="../app/scripts/oauth2/chrome_ex_oauthsimple.js"></script>
+    <script src="../app/scripts/oauth2/chrome_ex_oauth.js"></script>
+    <script src="../app/scripts/oauth2/background_tasks.js"></script>
+    <script src="../app/scripts/authentication.js"></script>
 
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
+    <script src="spec/background_spec.js"></script>
 
     <script>mocha.run()</script>
 </body>

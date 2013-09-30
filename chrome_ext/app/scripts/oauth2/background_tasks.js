@@ -29,8 +29,10 @@ function onAuthorized() {
         endpoint.
 **/
 function initOAuthFlow(provider) {
-  if(provider && typeof provider != 'string')
-    throw('Provider must be a string');
+  if(typeof provider != 'string') {
+    throw(new TypeError('Provider should be string'));
+  }
+
   var providerId = provider.toLowerCase();
   switch (providerId) {
     case 'google':
@@ -49,6 +51,6 @@ function initOAuthFlow(provider) {
       // stub
       break;
     default:
-      throw('Unrecognized provider');
+      throw(new Error('Unrecognized provider'));
   }
 }
