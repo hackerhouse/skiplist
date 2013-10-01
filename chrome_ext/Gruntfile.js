@@ -100,7 +100,6 @@ module.exports = function (grunt) {
                 imagesDir: '<%= skiplist.app %>/images',
                 javascriptsDir: '<%= skiplist.app %>/scripts',
                 fontsDir: '<%= skiplist.app %>/styles/fonts',
-                importPath: '<%= skiplist.app %>/bower_components',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 relativeAssets: false
