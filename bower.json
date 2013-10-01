@@ -1,0 +1,25 @@
+{
+  "name": "skiplist",
+  "version": "0.0.3",
+  "homepage": "https://github.com/hackerhouse/skiplist",
+  "authors": [
+    "Akhil <akhilaryan@ymail.com>",
+    "Drew Winget <awinget@stanford.edu>",
+    "Michael E. Karpeles <michael.karpeles@gmail.com>",
+    "Zephyr <zephyr.pellerin@gmail.com>"
+  ],
+  "description": "An application for distributing media with fellow hackers",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io": "~0.9.15",
+    "underscore": "~1.5.2"
+  }
+}
