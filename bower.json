@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "socket.io": "~0.9.15",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "normalize-css": "*"
   }
 }
