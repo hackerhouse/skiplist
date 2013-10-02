@@ -1,14 +1,14 @@
 (function() {
 
-  var mongoose = require('mongoose')
-    , User = mongoose.model('users')
-    , Tile = mongoose.model('tiles')
+  var mongoose = require('mongoose'),
+    User = mongoose.model('User'),
+    Tile = mongoose.model('Tile');
 
   var _ = require('underscore');
 
   function trimName (name) {
     return name.split(' ')[0];
-  };
+  }
 
   function parseUri (str) {
     var o   = parseUri.options,

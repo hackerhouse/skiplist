@@ -12,4 +12,4 @@ TileSchema.virtual('date').get(function(){
   return this._id.getTimestamp();
 });
 
-mongoose.model('tiles', TileSchema);
+mongoose.model('Tile', TileSchema);

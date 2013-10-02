@@ -14,4 +14,4 @@ var UserSchema = new Schema({
     created: {type: Date, 'default': Date.now},
 });
 
-mongoose.model('users', UserSchema);
+mongoose.model('User', UserSchema);

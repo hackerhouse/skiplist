@@ -1,5 +1,5 @@
-var mongoose = require('mongoose')
-  , Tile = mongoose.model('tiles');
+var mongoose = require('mongoose'),
+    Tile = mongoose.model('Tile');
 
 exports.read = function(req, res){
   Tile.find(function(err, results) {
@@ -13,8 +13,7 @@ exports.read = function(req, res){
 
 exports.update = function(req, res){
     var tileq = {'uid': req.body.uid,
-                 'pageURL': req.body.pageURL
-                };
+                 'pageURL': req.body.pageURL };
     Tile.findOne(tileq, function(err, tile) {
         if (!err) {
             if (tile) {
