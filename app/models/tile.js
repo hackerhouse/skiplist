@@ -4,8 +4,13 @@ var mongoose = require('mongoose'),
 var TileSchema = new Schema({
   title: String,
   url: String,
-  user: { type: Schema.Types.ObjectId, ref: 'UserSchema' },
-  responseHeaders: Object
+  responseHeaders: Object,
+  // Document-oriented databases in principle mean we could never have keep a a
+  // user id that we populate.  It will be nicer however to do some checking in
+  // app/controllers/tile.js to ensure that an OAuth key is valid (so we don't
+  // have any misattributions :) and link the user_id so we can use
+  // `populate()` later
+  _user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 // MongoDB has virtual timeStamps everwhere!
