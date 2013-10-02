@@ -16,9 +16,12 @@ fs.readdirSync(modelsPath).forEach(function (file) {
   }
 });
 
-var app = express();
+var app  = express();
 var path = require('path');
 var http = require('http');
+// Accessible to subapps
+format = require('util').format;
+_      = require('underscore');
 
 require('./config/express')(app, config);
 require('./config/routes')(app);
