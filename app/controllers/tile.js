@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    Tile = mongoose.model('Tile');
+Tile = mongoose.model('Tile');
 
 exports.read = function(req, res){
   Tile.find(function(err, results) {
@@ -12,35 +12,35 @@ exports.read = function(req, res){
 }
 
 exports.update = function(req, res){
-    var tileq = {'uid': req.body.uid,
-                 'pageURL': req.body.pageURL };
+  var tileq = {'uid': req.body.uid,
+    'pageURL': req.body.pageURL };
     Tile.findOne(tileq, function(err, tile) {
-        if (!err) {
-            if (tile) {
-                Tile.update(tileq, req.body, function(err, modified) {
-                    res.send(modified);
-                });
-            } else {
-                Tile.create(req.body, function(err, records) {
-                    res.send(records);
-                });
-            }
+      if (!err) {
+        if (tile) {
+          Tile.update(tileq, req.body, function(err, modified) {
+            res.send(modified);
+          });
         } else {
-            res.send(500);
+          Tile.create(req.body, function(err, records) {
+            res.send(records);
+          });
         }
+      } else {
+        res.send(500);
+      }
     });
 };
 
 exports.del = function (req, res) {
-    var tid = new mongoose.Types.ObjectId(req.params.id);
-    Tile.remove({_id: tid}, function(err, removed) {
-        if (err) {
-            console.log(err);
-            res.send(500);
-        } else {
-            console.log(removed);
-            res.send(200);
-        }
-    });
+  var tid = new mongoose.Types.ObjectId(req.params.id);
+  Tile.remove({_id: tid}, function(err, removed) {
+    if (err) {
+      console.log(err);
+      res.send(500);
+    } else {
+      console.log(removed);
+      res.send(200);
+    }
+  });
 }
 

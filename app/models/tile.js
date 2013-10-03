@@ -14,6 +14,8 @@ var TileSchema = new Schema({
 });
 
 // MongoDB has virtual timeStamps everwhere!
+// (This is to say that we don't need to collect timestamps, they are embedded
+// in the object itself, unlike other database systems)
 TileSchema.virtual('date').get(function(){
   return this._id.getTimestamp();
 });

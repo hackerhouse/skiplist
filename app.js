@@ -26,31 +26,19 @@ _      = require('underscore');
 require('./config/express')(app, config);
 require('./config/routes')(app);
 
-app.use(express.favicon());
-app.use(express.logger(process.env.NODE_ENV));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-// Hogan.js setup
-// hjs files use .html as their extension now.
-app.set('view engine', 'html');
-app.set('layout', 'layout');
-app.engine('html', require('hogan-express'));
-// In production we don't care about refreshing the templates.
-if ('development' != app.get('env'))
-  app.enable('view cache');
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
+// Setup our HTTP server
 var server = http.createServer(app);
 server.listen(config.port, function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+// Listen for SocketIO connections
 var io = require("socket.io").listen(server);
 io.on('connection', function(socket){
   console.log("Connection Establisted!");
