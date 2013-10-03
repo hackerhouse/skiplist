@@ -9,11 +9,10 @@ exports.read = function(req, res){
       res.send(500);
     }
   });
-}
+};
 
 exports.update = function(req, res){
-  var tileq = {'uid': req.body.uid,
-    'pageURL': req.body.pageURL };
+  var tileq = {'oauth_id': req.body.user.oauth_id, 'url': req.body.url };
     Tile.findOne(tileq, function(err, tile) {
       if (!err) {
         if (tile) {
@@ -42,5 +41,4 @@ exports.del = function (req, res) {
       res.send(200);
     }
   });
-}
-
+};

@@ -12,9 +12,11 @@ exports.read = function(req, res){
 }
 
 exports.update = function(req, res){
+  console.log("Incoming Request to users.update");
   var uid = req.body.id;
   User.findOne({'id': uid}, function(err, user) {
     if(user) {
+      console.log("Updating existing user: " + user.name);
       User.update({'id': uid}, req.body, function(err, modified) {
         if (!err) {
           res.send(200);
@@ -24,6 +26,7 @@ exports.update = function(req, res){
       });
     } else {
       User.create(req.body, function(err, records) {
+        console.log("Creating new user");
         if (!err) {
           res.send(records);
         } else {
