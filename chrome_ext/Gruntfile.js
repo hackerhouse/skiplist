@@ -275,6 +275,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'replace',
         'chromeManifest:dist',
         'useminPrepare',
         'concurrent:dist',
@@ -282,7 +283,6 @@ module.exports = function (grunt) {
         'concat',
         //'uglify',
         'copy',
-        'replace',
         'usemin',
         'compress'
     ]);

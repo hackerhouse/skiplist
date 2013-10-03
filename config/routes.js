@@ -13,4 +13,7 @@ module.exports = function(app){
   app.get('/tiles', tile.read);
   app.del('/tiles/:id', tile.del);
   app.post('/tiles', tile.update);
+
+  var logger = require('../app/controllers/logger');
+  app.post('/log', logger.update);
 };

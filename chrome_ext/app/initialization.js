@@ -15,7 +15,7 @@
 var Skiplist = window.SkipList  = {};
 
 // Remote skiplist host
-Skiplist.remoteURL = "http://@@hostname:@@port/";
+Skiplist.remoteURL = "http://@@hostname:@@port";
 
 // Currently supported OAuth2 providers
 Skiplist.providers = ["google"];
@@ -27,6 +27,25 @@ Skiplist.providers = ["google"];
 Skiplist.providerTokens = {
   google: {
     clientID: "@@auth.google.clientID",
-    clientSecret: "@@auth.google.clientSecret",
+    clientSecret: "@@auth.google.clientSecret"
   }
 };
+
+//
+// helper methods
+//
+
+// Because we debug a page context rather than the 'whole extension', it is
+// tough to get access to a window that we can log messages to in a fashion
+// similar to the regular JS console. Instead, we just send new messages we'd
+// like logged as a post to this.remoteURL + '/log'.
+Skiplist.log = function(message) {
+  console.log(message);
+  $.ajax({
+    type: 'POST',
+    url: Skiplist.remoteURL + '/log',
+    data: message
+  });
+};
+
+

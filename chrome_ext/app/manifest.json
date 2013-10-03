@@ -1,13 +1,15 @@
 {
     "name": "Skiplist",
-    "version": "0.3.100",
+    "version": "0.3.124",
     "manifest_version": 2,
     "description": "An application for sharing media with your fellow hackers",
     "background": {
         "scripts": [
+            "scripts/jquery.min.js",
+            "../dist/scripts/initialization.js",
             "scripts/oauth2/chrome_ex_oauthsimple.js",
             "scripts/oauth2/chrome_ex_oauth.js",
-            "scripts/oauth2/background_tasks.js",
+            "scripts/authentication.js",
             "scripts/background.js"
         ]
     },

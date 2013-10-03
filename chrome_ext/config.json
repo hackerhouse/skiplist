@@ -1,6 +1,6 @@
 {
   "hostname": "localhost",
-  "port": 3000,
+  "port": 4000,
   "auth": {
     "google": {
       "clientID": "95934860924.apps.googleusercontent.com",
