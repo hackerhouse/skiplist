@@ -20,6 +20,8 @@ Skiplist.postTile = function() {
       type: 'POST',
       url: Skiplist.remoteURL + '/tiles',
       data: tile
+    }).done(function() {
+      chrome.browserAction.setIcon({path:"images/icon-38-saved-state.png"});
     });
   });
 };
