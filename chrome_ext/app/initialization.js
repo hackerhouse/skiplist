@@ -48,4 +48,9 @@ Skiplist.log = function(message) {
   });
 };
 
-
+// Raises an exception if there is no currentUser.
+Skiplist.currentUser = function() {
+  var currentUser = localStorage.currentUser;
+  if (!currentUser) { throw("No current user saved"); }
+  return JSON.parse(currentUser);
+};
