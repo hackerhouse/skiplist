@@ -20,7 +20,12 @@ exports.update = function(req, res){
             res.send(modified);
           });
         } else {
-          Tile.create(req.body, function(err, records) {
+          // it's sunday and I'll going full lazymode (I still have work I need
+          // to finish) Don't bother using `populate` to derive a different
+          // user and just read in the record's name from the request.
+          var newTile = req.body;
+          newTile.user.given_name = req.body.user.oauth_id.given_name;
+          Tile.create(newTile, function(err, records) {
             res.send(records);
           });
         }

@@ -3,7 +3,10 @@ var mongoose = require('mongoose'),
 
 var TileSchema = new Schema({
   title: String,
-  url: String
+  url: String,
+  user: {
+    given_name: String
+  }
   // user: {
   //   name: String,
   //   id: Schema.Types.ObjectID
@@ -14,7 +17,8 @@ var TileSchema = new Schema({
 // (This is to say that we don't need to collect timestamps, they are embedded
 // in the object itself, unlike other database systems)
 TileSchema.virtual('date').get(function(){
-  return this._id.getTimestamp();
+  var date = this._id.getTimestamp();
+  return "" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 });
 
 // Very, very long RegExp (only incidentally a function) that came into use in

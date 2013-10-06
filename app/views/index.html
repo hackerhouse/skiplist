@@ -1,18 +1,28 @@
 <div id="columns">
   {{#tiles}}
-  <div class="tile">
-    <a class="blockLink" href="{{pageURL}}" target="_blank"></a>
-    <div class="options">
-      <ul>
-        <li><button class="option delete" value="{{_id}}">x</button></li>
-      </ul>
-    </div>
-    <h2 class="name">_none</h2>
-    <h3>
-      {{ title }}
-    </h3>
-    <span class="domain">{{ url }}</span>
-    <span class="timeStamp"></span>
-  </div>
+    {{#isTile}}
+      <div class="tile">
+        <a class="blockLink" href="{{url}}" target="_blank"></a>
+        <div class="options">
+          <ul>
+            <li><button class="option delete" value="{{_id}}">x</button></li>
+          </ul>
+        </div>
+        <h2 class="name">_{{ user.given_name }}</h2>
+        <h3>
+          {{ title }}
+        </h3>
+        <span class="domain">{{ texturl }}</span>
+        <span class="timeStamp">{{ date }}</span>
+      </div>
+    {{/isTile}}
+    <!--
+      {{!If we have an image}}
+    -->
+    {{#isImage}}
+      <div class="image_tile">
+        <img src="{{url}}" alt="{{ user.given_name}}" />
+      </div>
+    {{/isImage}}
   {{/tiles}}
 </div>
