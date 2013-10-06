@@ -2,6 +2,10 @@
   "name": "skiplist",
   "version": "0.0.0",
   "dependencies": {},
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/isaacs/npm.git"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",

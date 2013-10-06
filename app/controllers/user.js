@@ -9,7 +9,7 @@ exports.read = function(req, res){
       res.send(500);
     }
   });
-}
+};
 
 exports.update = function(req, res){
   console.log("Incoming Request to users.update");

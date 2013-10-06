@@ -10,8 +10,12 @@ var UserSchema = new Schema({
   link: String,
   locale: String,
   name: String,
-  picture: String,
-  created: {type: Date, 'default': Date.now},
+  picture: String
+});
+
+// MongoDB has virtual timeStamps
+UserSchema.virtual('date').get(function(){
+  return this._id.getTimestamp();
 });
 
 mongoose.model('User', UserSchema);
