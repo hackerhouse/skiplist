@@ -3,8 +3,11 @@ var mongoose = require('mongoose'),
 
 var TileSchema = new Schema({
   title: String,
-  url: String,
-  responseHeaders: Object
+  url: String
+  // user: {
+  //   name: String,
+  //   id: Schema.Types.ObjectID
+  // }
 });
 
 // MongoDB has virtual timeStamps everwhere!

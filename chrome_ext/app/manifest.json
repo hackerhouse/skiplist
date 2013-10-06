@@ -1,6 +1,6 @@
 {
     "name": "Skiplist",
-    "version": "0.3.153",
+    "version": "0.3.174",
     "manifest_version": 2,
     "description": "An application for sharing media with your fellow hackers",
     "background": {

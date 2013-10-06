@@ -11,6 +11,7 @@ var UserSchema = new Schema({
   locale: String,
   name: String,
   picture: String
+  //tiles: [{type: Schema.Types.ObjectID, ref: 'Tile'}]
 });
 
 // MongoDB has virtual timeStamps
