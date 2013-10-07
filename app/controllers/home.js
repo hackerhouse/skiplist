@@ -5,9 +5,10 @@ Tile = mongoose.model('Tile');
 var _ = require('underscore');
 
 exports.index = function(req, res) {
+  var renderedTiles = [];
   Tile.find(null, null, {sort: {$natural: -1}}, function(err, tiles) {
-    if (err) {
-      res.render('500');
+    if (err || !tiles || _.isEmpty(tiles)) {
+      res.send('no tiles');
     }
     var users = {};
     _.forEach(tiles, function(tile) {

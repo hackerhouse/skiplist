@@ -12,18 +12,19 @@ exports.read = function(req, res){
 };
 
 exports.update = function(req, res){
-  var tileq = {'oauth_id': req.body.user.oauth_id, 'url': req.body.url };
+  var tileq = {'url': req.body.url };
     Tile.findOne(tileq, function(err, tile) {
       if (!err) {
         if (tile) {
-          Tile.update(tileq, req.body, function(err, modified) {
+          tile.upvotes += 1;
+          Tile.update(tileq, tile, function(err, modified) {
             res.send(modified);
           });
         } else {
           // it's sunday and I'll going full lazymode (I still have work I need
           // to finish). Don't bother using `populate` to derive a preexisting user,
-          // just read in our user's oauth info from the request. 
-          var newTile = req.body;
+          // just read in our user's oauth info from the request.
+          var newTile  = req.body;
           newTile.user = req.body.user.oauth_id;
           Tile.create(newTile, function(err, records) {
             io.sockets.emit('tile_added', records);
