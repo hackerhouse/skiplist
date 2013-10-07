@@ -4,9 +4,7 @@ var mongoose = require('mongoose'),
 var TileSchema = new Schema({
   title: String,
   url: String,
-  user: {
-    given_name: String
-  }
+  user: Object
   // user: {
   //   name: String,
   //   id: Schema.Types.ObjectID
