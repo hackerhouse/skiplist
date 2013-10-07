@@ -17,8 +17,6 @@ exports.index = function(req, res) {
         tile.isImage = true;
       } else {
         tile.isTile = true;
-        var protocolEnd = tile.url.indexOf("//") + 2;
-        tile.text_url = tile.url.slice(protocolEnd, 22 + protocolEnd);
       }
     });
     res.locals = {title: 'Skiplist', tiles: tiles};

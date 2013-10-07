@@ -2,7 +2,7 @@
   {{#tiles}}
     {{#isTile}}
       <div class="tile">
-        <a class="blockLink" href="{{url}}" target="_blank"></a>
+        <a class="blockLink" href="{{ url }}" target="_blank"></a>
         <div class="options">
           <ul>
             <li><button class="option delete" value="{{_id}}">x</button></li>
@@ -12,7 +12,7 @@
         <h3>
           {{ title }}
         </h3>
-        <span class="domain">{{ texturl }}</span>
+        <span class="domain">{{ shortUrl }}</span>
         <span class="timeStamp">{{ date }}</span>
       </div>
     {{/isTile}}

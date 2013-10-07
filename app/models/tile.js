@@ -21,6 +21,13 @@ TileSchema.virtual('date').get(function(){
   return "" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 });
 
+// Short URL for the purposes of displaying the URL in the frontend.
+TileSchema.virtual('shortUrl').get(function(){
+  var protocolEnd = this.url.indexOf("//") + 2;
+  return this.url.slice(protocolEnd, 23 + protocolEnd);
+});
+
+
 // Very, very long RegExp (only incidentally a function) that came into use in
 // home.js. I will keep it around for now but I would very much like to obsolete it
 // through the transmission of hostname by the extension as soon as reasonable.
