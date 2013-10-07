@@ -26,6 +26,7 @@ exports.update = function(req, res){
           var newTile = req.body;
           newTile.user = req.body.user.oauth_id;
           Tile.create(newTile, function(err, records) {
+            io.sockets.emit('tile_added', records);
             res.send(records);
           });
         }

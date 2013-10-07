@@ -1,5 +1,5 @@
 $(function() {
-  $(".option.delete").click(function() {
+  $(".option.delete").on('click', function() {
     var $tile = $(this).parents(".tile");
     $tile.fadeOut();
 

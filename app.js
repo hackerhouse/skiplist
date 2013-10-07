@@ -39,7 +39,7 @@ server.listen(config.port, function(){
 });
 
 // Listen for SocketIO connections
-var io = require("socket.io").listen(server);
+io = require("socket.io").listen(server);
 io.on('connection', function(socket){
   console.log("Connection Establisted!");
   socket.emit('event_from_server', {
