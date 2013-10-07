@@ -24,7 +24,7 @@ TileSchema.virtual('date').get(function(){
 // Short URL for the purposes of displaying the URL in the frontend.
 TileSchema.virtual('shortUrl').get(function(){
   var protocolEnd = this.url.indexOf("//") + 2;
-  return this.url.slice(protocolEnd, 23 + protocolEnd);
+  return this.url.slice(protocolEnd, 21 + protocolEnd);
 });
 
 
