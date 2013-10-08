@@ -21,7 +21,7 @@ exports.update = function(req, res){
             res.send(modified);
           });
         } else {
-          // It's Sunday and I'll be going full lazymode (I still have work I need
+          // it's sunday and I'll going full lazymode (I still have work I need
           // to finish). Don't bother using `populate` to derive a preexisting user,
           // just read in our user's oauth info from the request.
           var newTile  = req.body;
