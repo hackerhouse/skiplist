@@ -13,7 +13,7 @@
           {{ title }}
         </h3>
         <span class="domain">{{ shortUrl }}</span>
-        <span class="timeStamp">{{ date }}</span>
+        <span data-time-stamp="{{ date }}" class="timeStamp">{{ time_ago }}</span>
       </div>
     {{/isTile}}
     <!--

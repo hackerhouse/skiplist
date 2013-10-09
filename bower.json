@@ -19,8 +19,11 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "*",
     "socket.io": "~0.9.15",
     "underscore": "~1.5.2",
-    "normalize-css": "*"
+    "normalize-css": "*",
+    "momentjs": "~2.3.0",
+    "hogan": "~3.0.0"
   }
 }

@@ -17,7 +17,7 @@ var TileSchema = new Schema({
 // in the object itself, unlike other database systems)
 TileSchema.virtual('date').get(function(){
   var date = this._id.getTimestamp();
-  return "" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+  return "" + date;
 });
 
 // Short URL for the purposes of displaying the URL in the frontend.

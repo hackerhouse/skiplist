@@ -18,6 +18,10 @@ module.exports = function (grunt) {
       options: {
         nospawn: true,
         livereload: reloadPort
+      }, 
+      hogan: {
+        files: ['public/templates/*.html'],
+        tasks: ['hogan']
       },
       js: {
         files: [
@@ -36,7 +40,7 @@ module.exports = function (grunt) {
           }
         },
         files: ['public/styles/{,*/}*.less'],
-        tasks: ['less']
+          tasks: ['less']
       }
     },
     //
@@ -52,7 +56,23 @@ module.exports = function (grunt) {
           'public/styles/css/style.css': 'public/styles/less/style.less'
         }
       }
+    },
+    // Hogan
+    // Precompile hogan templates for client application
+    hogan: {
+      publish: {
+        options: {
+          prettify: true,
+          defaultName: function(filename) {
+              return ( filename.split('/').pop() ).split('.')[0];
+          }
+        },
+        files:{
+          'public/js/templates.js': ['public/templates/**/*.html']
+        }
+      }
     }
+
   });
 
   grunt.config.requires('watch.js.files');
@@ -63,13 +83,13 @@ module.exports = function (grunt) {
     var done = this.async();
     setTimeout(function () {
       request.get('http://localhost:' + reloadPort + '/changed?files=' + files.join(','),  function(err, res) {
-          var reloaded = !err && res.statusCode === 200;
-          if (reloaded)
-            grunt.log.ok('Delayed live reload successful.');
-          else
-            grunt.log.error('Unable to make a delayed live reload.');
-          done(reloaded);
-        });
+        var reloaded = !err && res.statusCode === 200;
+        if (reloaded)
+          grunt.log.ok('Delayed live reload successful.');
+        else
+          grunt.log.error('Unable to make a delayed live reload.');
+        done(reloaded);
+      });
     }, 500);
   });
 
@@ -93,6 +113,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-develop');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-hogan');
 
   grunt.registerTask('default', ['develop', 'watch']);
 };
