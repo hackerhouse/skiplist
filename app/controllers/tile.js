@@ -26,9 +26,9 @@ exports.update = function(req, res){
           // just read in our user's oauth info from the request.
           var newTile  = req.body;
           newTile.user = req.body.user.oauth_id;
-          Tile.create(newTile, function(err, records) {
-            io.sockets.emit('tile_added', records);
-            res.send(records);
+          Tile.create(newTile, function(err, record) {
+            io.sockets.emit('tile_added', record.toJSON({virtuals: true}));
+            res.send(record);
           });
         }
       } else {
