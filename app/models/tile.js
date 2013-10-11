@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+URL = require('url'),
+Schema = mongoose.Schema;
 
 var TileSchema = new Schema({
   title: String,
@@ -21,11 +22,10 @@ TileSchema.virtual('date').get(function(){
 });
 
 // Short URL for the purposes of displaying the URL in the frontend.
-TileSchema.virtual('shortUrl').get(function(){
-  var protocolEnd = this.url.indexOf("//") + 2;
-  return this.url.slice(protocolEnd, 21 + protocolEnd);
+TileSchema.virtual('shortUrl').get( function() {
+  parsedUrl = URL.parse(this.url);
+  return parsedUrl.host;
 });
-
 
 // Very, very long RegExp (only incidentally a function) that came into use in
 // home.js. I will keep it around for now but I would very much like to obsolete it
@@ -33,9 +33,9 @@ TileSchema.virtual('shortUrl').get(function(){
 TileSchema.methods.parseURL = function (str) {
   function parseUri (str) {
     var  o   = parseUri.options,
-      m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
-      uri = {},
-      i   = 14;
+    m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
+    uri = {},
+    i   = 14;
 
     while (i--) uri[o.key[i]] = m[i] || "";
 
@@ -50,17 +50,17 @@ TileSchema.methods.parseURL = function (str) {
   parseUri.options = {
     strictMode: false,
     key: ["source", "protocol", "authority", "userInfo",
-          "user", "password", "host", "port", "relative",
-          "path", "directory", "file", "query", "anchor"],
-    q:   {
-      name:   "queryKey",
-      parser: /(?:^|&)([^&=]*)=?([^&]*)/g
-    },
-    // This is why people use Coffeescript.
-    parser: {
-      strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
-      loose:  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
-    }
+      "user", "password", "host", "port", "relative",
+      "path", "directory", "file", "query", "anchor"],
+      q:   {
+        name:   "queryKey",
+        parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+      },
+      // This is why people use Coffeescript.
+      parser: {
+        strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+        loose:  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
+      }
   };
 
   return parseUri(this.url);

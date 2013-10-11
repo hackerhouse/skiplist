@@ -1,7 +1,9 @@
 var Skiplist = (function($, moment) {
+  _this = this;
   this.Templates = Templates;
-  var $tiles = $('.tile'),
-  $timeStamps = $tiles.find('.timeStamp');
+  var $tiles = $('.tile');
+  this.$timeStamps = $tiles.find('.timeStamp');
+  this.getTimeStamps = function() { return _this.$timeStamps; };
 
   console.log($tiles);
   $.each($tiles, function(index, tile) {
@@ -13,10 +15,10 @@ var Skiplist = (function($, moment) {
   });
 
   var update = function() {
-    $.each($timeStamps, function(index, timeStamp) {
+    $.each(_this.getTimeStamps(), function(index, timeStamp) {
       var timeText = moment($(timeStamp).attr('data-time-stamp')).fromNow();
       if ($(timeStamp).text() !== timeText) {
-        $(timeStamp).text(timeText).fadeIn();
+        $(timeStamp).text(timeText).remove().fadeIn();
       }
     });
   };
@@ -39,6 +41,13 @@ var Skiplist = (function($, moment) {
     // response, I can have it render that particular template instead.
     // if (tile.type === 'image') {};
     var $newTile = $(Templates.tile.render(tileData)).prependTo('#columns').fadeIn().removeClass('newTile');
+    _this.$timeStamps.add($newTile.find('.timeStamp')); 
+    
+    var date = $($newTile).find('.timeStamp').attr('data-time-stamp'),
+    $timeStamp = $($newTile).find('.timeStamp'),
+    timeText = moment(date).fromNow();
+    $timeStamp.text(timeText);
+    
     console.log(tileData);
   });
 })(jQuery, moment, Templates);
