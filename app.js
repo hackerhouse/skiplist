@@ -26,6 +26,7 @@ _      = require('underscore');
 require('./config/express')(app, config);
 require('./config/routes')(app);
 
+// TODO: move this to config/express.js?
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

@@ -11,11 +11,14 @@ module.exports = function(app, config) {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
+
     // Hogan.js setup
     // hjs files use .html as their extension now.
     app.set('view engine', 'html');
     app.set('layout', 'layout');
     app.engine('html', require('hogan-express'));
+
+    // TODO: check env == production instead of "not dev"?
     // In production we don't care about refreshing the templates.
     if ('development' != app.get('env')) { app.enable('view cache'); }
 
