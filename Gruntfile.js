@@ -18,7 +18,7 @@ module.exports = function (grunt) {
       options: {
         nospawn: true,
         livereload: reloadPort
-      }, 
+      },
       hogan: {
         files: ['public/templates/*.html'],
         tasks: ['hogan']
@@ -115,5 +115,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-hogan');
 
-  grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('default', ['develop', 'less', 'hogan', 'watch']);
 };
